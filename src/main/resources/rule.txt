@@ -1,0 +1,21 @@
+ALIVE:
+X X X X X X X X X
+ X X X X X X X X 
+  X X X X X X S  
+   S S = = = X   
+    S = = = =    
+     S S = =     
+      X X S      
+       X X       
+        X        
+
+DEAD:
+                 
+                 
+                 
+                 
+                 
+           +     
+                 
+                 
+                 
