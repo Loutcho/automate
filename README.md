@@ -13,6 +13,7 @@ There are rules to tell
 - when an alive cell survives and changes its color (case "S")
 
 The rules are stored in the file rule.txt with an ASCII art format, e.g.
+```
     --------
 d-> 87654321012345678
 n=8 X X X X X X X X X
@@ -24,6 +25,7 @@ n=3      S S = =
 n=2       X X S      
 n=1        X X       
 n=0         X        
+```
 
 means, for instance, that the alive cells die when n = 0, 1, 7, or 8;
 that they also die when n = 2 or 6, unless they are surrounded only by neighbours of the same color in which case they change allegiance;
