@@ -11,12 +11,10 @@ public class Main {
 		Main main = new Main();
 		main.loadRule();
 		main.init();
-		int n = 0;
 		main.display();
 		while (true) {
 			main.evolve();
 			main.display();
-			n ++;
 			Thread.sleep(200);
 		}
 	}
@@ -28,7 +26,7 @@ public class Main {
 	private static final int CHANGES  = 0x8;
 	private static final int ALIVE_MASK = 0xE;
 	
-	private static final char DEAD     = ' ';
+	private static final char DEAD     = '.';
 	private static final char WHITE    = 'o';
 	private static final char BLACK    = '■';
 	
@@ -104,22 +102,44 @@ public class Main {
 			}
 		}
 		
-		state[21][20] = BLACK;
-		state[22][20] = BLACK;
-		state[23][20] = BLACK;
-		state[24][20] = BLACK;
-		state[22][21] = BLACK;
-		state[23][21] = BLACK;
-		
-		int dx = 11;
-		int dy = 9;
+		// sympa: tourneur
+		/*
+		state[20][20] = BLACK;
+		state[19][21] = BLACK;
+		state[20][21] = BLACK;
+		state[21][21] = BLACK;
+		state[18][22] = BLACK;
+		state[20][22] = WHITE;
+		state[19][23] = BLACK;
+		state[20][23] = BLACK;
+		state[20][24] = BLACK;
+		state[20][25] = BLACK;
+		state[21][25] = WHITE;
+		state[21][26] = BLACK;
+		state[21][27] = BLACK;
+		*/
 
-		state[21 + dx][21 + dy] = WHITE;
-		state[21 + dx][22 + dy] = WHITE;
-		state[21 + dx][23 + dy] = WHITE;
-		state[21 + dx][24 + dy] = WHITE;
-		state[20 + dx][22 + dy] = WHITE;
-		state[20 + dx][23 + dy] = WHITE;
+		state[20][20] = BLACK;
+		state[20][21] = BLACK;
+		state[20][22] = BLACK;
+		state[20][23] = BLACK;
+		state[20][24] = BLACK;
+		state[20][25] = BLACK;
+		
+		// life: 2 glisseurs
+		/*
+		state[20][20] = WHITE;
+		state[18][20] = WHITE;
+		state[20][21] = WHITE;
+		state[19][21] = WHITE;
+		state[19][22] = WHITE;
+		
+		state[40][20] = BLACK;
+		state[42][20] = BLACK;
+		state[40][21] = BLACK;
+		state[41][21] = BLACK;
+		state[41][22] = BLACK;
+		*/
 	}
 	
 	private void display() {
@@ -137,13 +157,12 @@ public class Main {
 		for (int dx = -1; dx <= +1; dx ++) {
 			for (int dy = -1; dy <= +1; dy ++) {
 				if (! (dx == 0 && dy == 0)) {
-					if ((x + dx >= 0) && (x + dx < SIDE_X) && (y + dy >= 0) && (y + dy < SIDE_Y)) {
-						if (state[x + dx][y + dy] != DEAD) {
-							c ++;
-						}
+					int xx = (x + SIDE_X + dx) % SIDE_X;
+					int yy = (y + SIDE_Y + dy) % SIDE_Y;
+					if (state[xx][yy] != DEAD) {
+						c ++;
 					}
 				}
-				
 			}
 		}
 		return c;
@@ -154,13 +173,12 @@ public class Main {
 		for (int dx = -1; dx <= +1; dx ++) {
 			for (int dy = -1; dy <= +1; dy ++) {
 				if (! (dx == 0 && dy == 0)) {
-					if ((x + dx >= 0) && (x + dx < SIDE_X) && (y + dy >= 0) && (y + dy < SIDE_Y)) {
-						if (state[x + dx][y + dy] == color) {
-							c ++;
-						}
+					int xx = (x + SIDE_X + dx) % SIDE_X;
+					int yy = (y + SIDE_Y + dy) % SIDE_Y;
+					if (state[xx][yy] == color) {
+						c ++;
 					}
 				}
-				
 			}
 		}
 		return c;

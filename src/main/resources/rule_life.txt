@@ -1,11 +1,11 @@
 ALIVE:
-= X X X = X X X =
+X X X X X X X X X
  X X X X X X X X 
-  X X X X X X =  
-   X S S = = =   
-    X S = = =    
-     X S = =     
-      X X S      
+  X X X X X X X  
+   X X X X X X   
+    X X X X X    
+     = = = =     
+      = = =      
        X X       
         X        
 
@@ -15,7 +15,7 @@ DEAD:
                  
                  
                  
+     + + + +     
                  
-          +      
                  
                  
